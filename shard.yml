@@ -1,0 +1,13 @@
+name: htmlx
+version: 0.1.0
+
+authors:
+  - Billy.Zheng <vil963@gmail.com>
+
+targets:
+  htmlx:
+    main: src/htmlx.cr
+
+crystal: 1.9.2
+
+license: MIT
