@@ -8,6 +8,10 @@ targets:
   htmlx:
     main: src/htmlx.cr
 
+dependencies:
+  kemal:
+    github: kemalcr/kemal
+
 crystal: 1.9.2
 
 license: MIT
