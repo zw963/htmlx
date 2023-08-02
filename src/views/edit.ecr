@@ -1,0 +1,22 @@
+<h1>Hello</h1>
+
+<form action="/contacts/<%= contact.id %>/edit" method="post">
+  <fieldset>
+    <legend>Contact Values</legend>
+    <p>
+      <label for="email">Email</label>
+      <input type="email" name="email" placeholder="Email" value="<%= contact.email %>">
+      <span class="error"><%= contact.errors["email"] %></span>
+    </p>
+  </fieldset>
+  <button>Save</button>
+</form>
+
+
+<form action="/contacts/<%= contact.id %>/delete" method="post">
+  <button>Delete Contact</button>
+</form>
+
+<p>
+  <a href="/contacts">Back</a>
+</p>

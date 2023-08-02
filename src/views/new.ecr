@@ -1,0 +1,34 @@
+<form action="/contacts/new" method="post">
+  <fieldset>
+    <legend>Contact Values</legend>
+    <p>
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="Email" value="<%= contact.email %>">
+      <span class="error"><%= contact.errors["email"]? %></span>
+    </p>
+
+    <p>
+      <label for="first_name">First Name</label>
+      <input type="text" name="first_name" id="first_name" value="<%= contact.first %>" placeholder="First Name">
+      <span class="error"><%= contact.errors["first"]? %></span>
+    </p>
+
+    <p>
+      <label for="last_name">Last Name</label>
+      <input type="text" id="last_name" name="last_name" value="<%= contact.last %>" placeholder="Last Name">
+      <span class="error"><%= contact.errors["last"]? %></span>
+    </p>
+
+    <p>
+      <label for="phone">Phone</label>
+      <input type="text" name="phone" id="phone" placeholder="Phone" value="<%= contact.phone %>">
+      <span class="error"><%= contact.errors["phone"]? %></span>
+    </p>
+
+    <button>Save</button>
+  </fieldset>
+</form>
+
+<p>
+  <a href="/contacts">Back</a>
+</p>

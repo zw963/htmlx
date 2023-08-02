@@ -1,0 +1,32 @@
+<h1>Hello</h1>
+
+<form action="/contacts" method="get">
+  <label for="search">Search Term</label>
+  <input type="search" id="search" name="q" value="<%= query %>">
+  <input type="submit" value="Search">
+</form>
+
+<table>
+  <thead>
+    <th>First</th>
+    <th>Last</th>
+    <th>Phone</th>
+    <th>Email</th>
+  </thead>
+  <tbody>
+    <% contacts.each do |contact| %>
+      <tr>
+        <td><%= contact.first %></td>
+        <td><%= contact.last %></td>
+        <td><%= contact.phone %></td>
+        <td><%= contact.email %></td>
+        <td><a href="/contacts/<%= contact.id %>/edit">Edit</a></td>
+        <td><a href="/contacts/<%= contact.id %>">View</a></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<p>
+  <a href="/contacts/new">Add Contact</a>
+</p>

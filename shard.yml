@@ -11,6 +11,18 @@ targets:
 dependencies:
   kemal:
     github: kemalcr/kemal
+  crinja:
+    github: straight-shoota/crinja
+  hashr:
+    # github: crystal-china/hashr
+    path: /home/zw963/Crystal/crystal-china/hashr
+  json_mapping:
+    github: crystal-lang/json_mapping.cr
+  kemal-session:
+    github: kemalcr/kemal-session
+  kemal-flash:
+    github: crystal-china/kemal-flash
+    version: 0.2.0
 
 crystal: 1.9.2
 
