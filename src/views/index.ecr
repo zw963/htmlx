@@ -1,10 +1,11 @@
 <h1>Hello</h1>
 
-<form action="/contacts" method="get">
-  <label for="search">Search Term</label>
-  <input type="search" id="search" name="q" value="<%= query %>">
-  <input type="submit" value="Search">
-</form>
+
+<label for="search">Search Term</label>
+<input placeholder="Search for Contacts" type="search" id="search" name="q" value="<%= query %>">
+<button hx-get="/contacts" hx-target="#main" hx-include="#search">
+  Search the Contacts
+</button>
 
 <table>
   <thead>
@@ -26,6 +27,20 @@
     <% end %>
   </tbody>
 </table>
+
+<div>
+  <span style="float: right">
+    <% if page > 1 %>
+      <a href="/contacts?page=<%= page - 1 %>">Previous</a>
+    <% end %>
+
+    <% if contacts.size >= 10 %>
+      <a href="/contacts?page=<%= page + 1 %>">Next</a>
+    <% end %>
+  </span>
+</div>
+
+
 
 <p>
   <a href="/contacts/new">Add Contact</a>
