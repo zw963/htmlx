@@ -26,109 +26,191 @@ class Contact
   end
 
   def self.all(page)
-    if page == 1
-      contacts = [
-        {
-          id:     1,
-          first:  "billy",
-          last:   "zheng",
-          phone:  "18620053121",
-          email:  "vil963@gmail.com",
-          errors: {} of String => String,
-        },
-        {
-          id:     2,
-          first:  "xuan",
-          last:   "zheng",
-          phone:  "13603579818",
-          email:  "retired@qq.com",
-          errors: {} of String => String,
-        },
-        {
-          id:     3,
-          first:  "juan",
-          last:   "zheng",
-          phone:  "15026846909",
-          email:  "wj760527@163",
-          errors: {"email" => "error"},
-        },
-        {
-          id:     4,
-          first:  "billy",
-          last:   "zheng",
-          phone:  "18620053121",
-          email:  "vil963@gmail.com",
-          errors: {} of String => String,
-        },
-        {
-          id:     5,
-          first:  "xuan",
-          last:   "zheng",
-          phone:  "13603579818",
-          email:  "retired@qq.com",
-          errors: {} of String => String,
-        },
-        {
-          id:     6,
-          first:  "juan",
-          last:   "zheng",
-          phone:  "15026846909",
-          email:  "wj760527@163",
-          errors: {"email" => "error"},
-        },
-        {
-          id:     7,
-          first:  "billy",
-          last:   "zheng",
-          phone:  "18620053121",
-          email:  "vil963@gmail.com",
-          errors: {} of String => String,
-        },
-        {
-          id:     8,
-          first:  "xuan",
-          last:   "zheng",
-          phone:  "13603579818",
-          email:  "retired@qq.com",
-          errors: {} of String => String,
-        },
-        {
-          id:     9,
-          first:  "juan",
-          last:   "zheng",
-          phone:  "15026846909",
-          email:  "wj760527@163",
-          errors: {"email" => "error"},
-        },
-        {
-          id:     10,
-          first:  "juan",
-          last:   "zheng",
-          phone:  "15026846909",
-          email:  "wj760527@163",
-          errors: {"email" => "error"},
-        },
-        {
-          id:     11,
-          first:  "juan",
-          last:   "zheng",
-          phone:  "15026846909",
-          email:  "wj760527@163",
-          errors: {"email" => "error"},
-        },
-      ]
-    else
-      contacts = [
-        {
-          id:     11,
-          first:  "juan",
-          last:   "zheng",
-          phone:  "15026846909",
-          email:  "wj760527@163",
-          errors: {"email" => "error"},
-        },
-      ]
-    end
+    contacts =
+      if page == 1
+        [
+          {
+            id:     1,
+            first:  "billy",
+            last:   "zheng",
+            phone:  "18620053121",
+            email:  "vil963@gmail.com",
+            errors: {} of String => String,
+          },
+          {
+            id:     2,
+            first:  "xuan",
+            last:   "zheng",
+            phone:  "13603579818",
+            email:  "retired@qq.com",
+            errors: {} of String => String,
+          },
+          {
+            id:     3,
+            first:  "juan",
+            last:   "zheng",
+            phone:  "15026846909",
+            email:  "wj760527@163",
+            errors: {"email" => "error"},
+          },
+          {
+            id:     4,
+            first:  "billy",
+            last:   "zheng",
+            phone:  "18620053121",
+            email:  "vil963@gmail.com",
+            errors: {} of String => String,
+          },
+          {
+            id:     5,
+            first:  "xuan",
+            last:   "zheng",
+            phone:  "13603579818",
+            email:  "retired@qq.com",
+            errors: {} of String => String,
+          },
+          {
+            id:     6,
+            first:  "juan",
+            last:   "zheng",
+            phone:  "15026846909",
+            email:  "wj760527@163",
+            errors: {"email" => "error"},
+          },
+          {
+            id:     7,
+            first:  "billy",
+            last:   "zheng",
+            phone:  "18620053121",
+            email:  "vil963@gmail.com",
+            errors: {} of String => String,
+          },
+          {
+            id:     8,
+            first:  "xuan",
+            last:   "zheng",
+            phone:  "13603579818",
+            email:  "retired@qq.com",
+            errors: {} of String => String,
+          },
+          {
+            id:     9,
+            first:  "juan",
+            last:   "zheng",
+            phone:  "15026846909",
+            email:  "wj760527@163",
+            errors: {"email" => "error"},
+          },
+          {
+            id:     10,
+            first:  "juan",
+            last:   "zheng",
+            phone:  "15026846909",
+            email:  "wj760527@163",
+            errors: {"email" => "error"},
+          },
+        ]
+      elsif page == 2
+        [
+          {
+            id:     11,
+            first:  "11",
+            last:   "zheng",
+            phone:  "18620053121",
+            email:  "vil963@gmail.com",
+            errors: {} of String => String,
+          },
+          {
+            id:     12,
+            first:  "12",
+            last:   "zheng",
+            phone:  "13603579818",
+            email:  "retired@qq.com",
+            errors: {} of String => String,
+          },
+          {
+            id:     13,
+            first:  "13",
+            last:   "zheng",
+            phone:  "15026846909",
+            email:  "wj760527@163",
+            errors: {"email" => "error"},
+          },
+          {
+            id:     14,
+            first:  "14",
+            last:   "zheng",
+            phone:  "18620053121",
+            email:  "vil963@gmail.com",
+            errors: {} of String => String,
+          },
+          {
+            id:     15,
+            first:  "15",
+            last:   "zheng",
+            phone:  "13603579818",
+            email:  "retired@qq.com",
+            errors: {} of String => String,
+          },
+          {
+            id:     16,
+            first:  "16",
+            last:   "zheng",
+            phone:  "15026846909",
+            email:  "wj760527@163",
+            errors: {"email" => "error"},
+          },
+          {
+            id:     17,
+            first:  "17",
+            last:   "zheng",
+            phone:  "18620053121",
+            email:  "vil963@gmail.com",
+            errors: {} of String => String,
+          },
+          {
+            id:     18,
+            first:  "18",
+            last:   "zheng",
+            phone:  "13603579818",
+            email:  "retired@qq.com",
+            errors: {} of String => String,
+          },
+          {
+            id:     19,
+            first:  "19",
+            last:   "zheng",
+            phone:  "15026846909",
+            email:  "wj760527@163",
+            errors: {"email" => "error"},
+          },
+          {
+            id:     20,
+            first:  "20",
+            last:   "zheng",
+            phone:  "15026846909",
+            email:  "wj760527@163",
+            errors: {"email" => "error"},
+          },
+        ]
+      else
+        [
+          {
+            id:    21,
+            first: "21",
+            last:  "zheng",
+            phone: "18620053121",
+            email: "vil963@gmail.com",
+          },
+          {
+            id:    22,
+            first: "22",
+            last:  "zheng",
+            phone: "13603579818",
+            email: "retired@qq.com",
+          },
+        ]
+      end
 
     contacts.map { |e| Hashr.new(e) }
   end

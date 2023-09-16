@@ -9,14 +9,18 @@
 
 <table>
   <thead>
+    <th>id</th>
     <th>First</th>
     <th>Last</th>
     <th>Phone</th>
     <th>Email</th>
+    <th></th>
+    <th></th>
   </thead>
   <tbody>
     <% contacts.each do |contact| %>
       <tr>
+        <td><%= contact.id %></td>
         <td><%= contact.first %></td>
         <td><%= contact.last %></td>
         <td><%= contact.phone %></td>
@@ -25,22 +29,22 @@
         <td><a href="/contacts/<%= contact.id %>">View</a></td>
       </tr>
     <% end %>
+    <% if contacts.size >= 10 %>
+      <tr>
+        <td colspan="7" style="text-align: center">
+          <button
+            hx-get="/contacts?page=<%= page + 1 %>"
+            hx-target="closest tr"
+            hx-swap="outerHTML"
+            hx-select="tbody"
+          >
+            Load More
+          </button>
+        </td>
+      </tr>
+    <% end %>
   </tbody>
 </table>
-
-<div>
-  <span style="float: right">
-    <% if page > 1 %>
-      <a href="/contacts?page=<%= page - 1 %>">Previous</a>
-    <% end %>
-
-    <% if contacts.size >= 10 %>
-      <a href="/contacts?page=<%= page + 1 %>">Next</a>
-    <% end %>
-  </span>
-</div>
-
-
 
 <p>
   <a href="/contacts/new">Add Contact</a>
