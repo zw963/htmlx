@@ -1,11 +1,21 @@
 <h1>Hello</h1>
 
 
-<label for="search">Search Term</label>
-<input placeholder="Search for Contacts" type="search" id="search" name="q" value="<%= query %>">
-<button hx-get="/contacts" hx-target="#main" hx-include="#search">
-  Search the Contacts
-</button>
+<!-- <label for="search">Search Term</label>
+     <input placeholder="Search for Contacts" type="search" id="search" name="q" value="<%= query %>">
+     <button hx-get="/contacts" hx-target="#main" hx-include="#search">
+     Search the Contacts
+     </button> -->
+
+<form action="/contacts" method="get" class="tool-bar">
+  <label for="search">Search Term</label>
+  <input id="search" type="search" name="q" value="<%= query %>"
+         hx-get="/contacts"
+         hx-target="tbody"
+         hx-select="tbody tr"
+         hx-trigger="search, keyup delay:200ms changed"/>
+  <input type="submit" value="Search"/>
+</form>
 
 <table>
   <thead>
@@ -32,14 +42,15 @@
     <% if contacts.size >= 10 %>
       <tr>
         <td colspan="7" style="text-align: center">
-          <button
+          <span
             hx-get="/contacts?page=<%= page + 1 %>"
             hx-target="closest tr"
+            hx-trigger="revealed"
             hx-swap="outerHTML"
             hx-select="tbody"
           >
             Load More
-          </button>
+</span>
         </td>
       </tr>
     <% end %>

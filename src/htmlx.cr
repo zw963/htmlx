@@ -216,22 +216,110 @@ class Contact
   end
 
   def self.search(query)
-    contacts = [
-      {
-        id:    1,
-        first: "billy",
-        last:  "zheng",
-        phone: "18620053121",
-        email: "vil963@gmail.com",
-      },
-      {
-        id:    2,
-        first: "xuan",
-        last:  "zheng",
-        phone: "13603579818",
-        email: "retired@qq.com",
-      },
-    ]
+    contacts = case query
+               when "zheng"
+                 [
+                   {
+                     id:    1,
+                     first: "billy",
+                     last:  "zheng",
+                     phone: "18620053121",
+                     email: "vil963@gmail.com",
+                   },
+                   {
+                     id:    2,
+                     first: "xuan",
+                     last:  "zheng",
+                     phone: "13603579818",
+                     email: "retired@qq.com",
+                   },
+                 ]
+               when ""
+                 [
+                   {
+                     id:     1,
+                     first:  "billy",
+                     last:   "zheng",
+                     phone:  "18620053121",
+                     email:  "vil963@gmail.com",
+                     errors: {} of String => String,
+                   },
+                   {
+                     id:     2,
+                     first:  "xuan",
+                     last:   "zheng",
+                     phone:  "13603579818",
+                     email:  "retired@qq.com",
+                     errors: {} of String => String,
+                   },
+                   {
+                     id:     3,
+                     first:  "juan",
+                     last:   "zheng",
+                     phone:  "15026846909",
+                     email:  "wj760527@163",
+                     errors: {"email" => "error"},
+                   },
+                   {
+                     id:     4,
+                     first:  "billy",
+                     last:   "zheng",
+                     phone:  "18620053121",
+                     email:  "vil963@gmail.com",
+                     errors: {} of String => String,
+                   },
+                   {
+                     id:     5,
+                     first:  "xuan",
+                     last:   "zheng",
+                     phone:  "13603579818",
+                     email:  "retired@qq.com",
+                     errors: {} of String => String,
+                   },
+                   {
+                     id:     6,
+                     first:  "juan",
+                     last:   "zheng",
+                     phone:  "15026846909",
+                     email:  "wj760527@163",
+                     errors: {"email" => "error"},
+                   },
+                   {
+                     id:     7,
+                     first:  "billy",
+                     last:   "zheng",
+                     phone:  "18620053121",
+                     email:  "vil963@gmail.com",
+                     errors: {} of String => String,
+                   },
+                   {
+                     id:     8,
+                     first:  "xuan",
+                     last:   "zheng",
+                     phone:  "13603579818",
+                     email:  "retired@qq.com",
+                     errors: {} of String => String,
+                   },
+                   {
+                     id:     9,
+                     first:  "juan",
+                     last:   "zheng",
+                     phone:  "15026846909",
+                     email:  "wj760527@163",
+                     errors: {"email" => "error"},
+                   },
+                   {
+                     id:     10,
+                     first:  "juan",
+                     last:   "zheng",
+                     phone:  "15026846909",
+                     email:  "wj760527@163",
+                     errors: {"email" => "error"},
+                   },
+                 ]
+               else
+                 [] of Hash(String, String)
+               end
 
     contacts.map { |e| Hashr.new(e) }
   end
