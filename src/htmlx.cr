@@ -337,11 +337,17 @@ get "/contacts" do |env|
 
   if query.nil?
     contacts = Contact.all(page)
+
+    render "src/views/index.ecr", "src/views/layouts/layout.ecr"
   else
     contacts = Contact.search(query)
-  end
 
-  render "src/views/index.ecr", "src/views/layouts/layout.ecr"
+    if env.request.headers["HX-Trigger"]? == "search"
+      render "src/views/partials/search.ecr"
+    else
+      render "src/views/index.ecr", "src/views/layouts/layout.ecr"
+    end
+  end
 end
 
 get "/contacts/new" do |env|

@@ -12,7 +12,6 @@
   <input id="search" type="search" name="q" value="<%= query %>"
          hx-get="/contacts"
          hx-target="tbody"
-         hx-select="tbody tr"
          hx-trigger="search, keyup delay:200ms changed"/>
   <input type="submit" value="Search"/>
 </form>
@@ -28,32 +27,7 @@
     <th></th>
   </thead>
   <tbody>
-    <% contacts.each do |contact| %>
-      <tr>
-        <td><%= contact.id %></td>
-        <td><%= contact.first %></td>
-        <td><%= contact.last %></td>
-        <td><%= contact.phone %></td>
-        <td><%= contact.email %></td>
-        <td><a href="/contacts/<%= contact.id %>/edit">Edit</a></td>
-        <td><a href="/contacts/<%= contact.id %>">View</a></td>
-      </tr>
-    <% end %>
-    <% if contacts.size >= 10 %>
-      <tr>
-        <td colspan="7" style="text-align: center">
-          <span
-            hx-get="/contacts?page=<%= page + 1 %>"
-            hx-target="closest tr"
-            hx-trigger="revealed"
-            hx-swap="outerHTML"
-            hx-select="tbody"
-          >
-            Load More
-</span>
-        </td>
-      </tr>
-    <% end %>
+    <%= render "src/views/partials/search.ecr" %>
   </tbody>
 </table>
 
