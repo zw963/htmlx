@@ -12,6 +12,7 @@
   <input id="search" type="search" name="q" value="<%= query %>"
          hx-get="/contacts"
          hx-target="tbody"
+         hx-push-url="true"
          hx-trigger="search, keyup delay:200ms changed"/>
   <input type="submit" value="Search"/>
 </form>
