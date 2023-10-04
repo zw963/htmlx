@@ -331,6 +331,12 @@ get "/" do |env|
   env.redirect "/contacts"
 end
 
+get "/contacts/count" do |env|
+  sleep 2
+  count = 100
+  "(#{count}) total Contacts"
+end
+
 get "/contacts" do |env|
   query = env.params.query["q"]?
   page = (env.params.query["page"]? || 1).to_i
