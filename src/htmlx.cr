@@ -334,6 +334,7 @@ end
 get "/contacts" do |env|
   query = env.params.query["q"]?
   page = (env.params.query["page"]? || 1).to_i
+  count = 100
 
   if query.nil?
     contacts = Contact.all(page)
