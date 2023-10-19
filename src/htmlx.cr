@@ -420,8 +420,13 @@ delete "/contacts/:id" do |env|
   )
 
   contact.delete
-  env.flash["notice"] = "Deleted Contact!"
-  env.redirect "/contacts", 303
+
+  if env.request.headers["HX-Trigger"]? == "delete-btn"
+    env.flash["notice"] = "Deleted Contact!"
+    env.redirect "/contacts", 303
+  else
+    ""
+  end
 end
 
 post "/contacts/new" do |env|
