@@ -409,6 +409,12 @@ post "/contacts/:id/edit" do |env|
   end
 end
 
+delete "/contacts" do |env|
+  ids = env.params.body.fetch_all("selected_contact_ids")
+  pp! ids
+  "hello"
+end
+
 delete "/contacts/:id" do |env|
   id = env.params.url["id"]
   contact = Contact.new(
