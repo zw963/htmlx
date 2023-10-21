@@ -332,7 +332,6 @@ get "/" do |env|
 end
 
 get "/contacts/count" do |env|
-  sleep 2
   count = 100
   "(#{count}) total Contacts"
 end
@@ -340,7 +339,6 @@ end
 get "/contacts" do |env|
   query = env.params.query["q"]?
   page = (env.params.query["page"]? || 1).to_i
-  count = 100
 
   if query.nil?
     contacts = Contact.all(page)
@@ -411,8 +409,8 @@ end
 
 delete "/contacts" do |env|
   ids = env.params.body.fetch_all("selected_contact_ids")
-  pp! ids
-  "hello"
+  env.flash["notice"] = "Deleted contacts"
+  env.redirect "/contacts", 303
 end
 
 delete "/contacts/:id" do |env|
