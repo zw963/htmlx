@@ -19,28 +19,29 @@
   <input type="submit" value="Search"/>
 </form>
 
-<button hx-delete="/contacts"
-        hx-confirm="Are you sure you want to delete these contacts?" (2)
-        hx-target="body"
-        hx-include="input[type='checkbox']"
->
-  Delete Selected Contacts
-</button>
+<form>
+  <button hx-delete="/contacts"
+          hx-confirm="Are you sure you want to delete these contacts?" (2)
+          hx-target="body"
+  >
+    Delete Selected Contacts
+  </button>
 
-<table>
-  <thead>
-    <th></th>
-    <th>First</th>
-    <th>Last</th>
-    <th>Phone</th>
-    <th>Email</th>
-    <th></th>
-    <th></th>
-  </thead>
-  <tbody>
-    <%= render "src/views/partials/search.ecr" %>
-  </tbody>
-</table>
+  <table>
+    <thead>
+      <th></th>
+      <th>First</th>
+      <th>Last</th>
+      <th>Phone</th>
+      <th>Email</th>
+      <th></th>
+      <th></th>
+    </thead>
+    <tbody>
+      <%= render "src/views/partials/search.ecr" %>
+    </tbody>
+  </table>
+</form>
 
 <p>
   <a href="/contacts/new">Add Contact</a>
