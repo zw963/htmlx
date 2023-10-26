@@ -333,6 +333,7 @@ end
 
 get "/contacts/count" do |env|
   count = 100
+  sleep 1
   "(#{count}) total Contacts"
 end
 

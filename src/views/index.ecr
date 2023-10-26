@@ -1,12 +1,3 @@
-<h1>Hello</h1>
-
-
-<!-- <label for="search">Search Term</label>
-     <input placeholder="Search for Contacts" type="search" id="search" name="q" value="<%= query %>">
-     <button hx-get="/contacts" hx-target="#main" hx-include="#search">
-     Search the Contacts
-     </button> -->
-
 <form action="/contacts" method="get" class="tool-bar">
   <label for="search">Search Term</label>
   <input id="search" type="search" name="q" value="<%= query %>"
@@ -15,18 +6,11 @@
          hx-push-url="true"
          hx-indicator="#spinner"
          hx-trigger="search, keyup delay:200ms changed"/>
-  <img id="spinner" class="htmx-indicator" src="/static/img/spinning-circles.svg" alt="Request In Flight..."/>
+  <img id="spinner" class="htmx-indicator" src="/static/img/spinning-circles.svg"/>
   <input type="submit" value="Search"/>
 </form>
 
 <form>
-  <button hx-delete="/contacts"
-          hx-confirm="Are you sure you want to delete these contacts?" (2)
-          hx-target="body"
-  >
-    Delete Selected Contacts
-  </button>
-
   <table>
     <thead>
       <th></th>
@@ -41,6 +25,13 @@
       <%= render "src/views/partials/search.ecr" %>
     </tbody>
   </table>
+
+  <button hx-delete="/contacts"
+          hx-confirm="Are you sure you want to delete these contacts?" (2)
+          hx-target="body"
+  >
+    Delete Selected Contacts
+  </button>
 </form>
 
 <p>
