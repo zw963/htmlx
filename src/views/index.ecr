@@ -6,20 +6,21 @@
          hx-push-url="true"
          hx-indicator="#spinner"
          hx-trigger="search, keyup delay:200ms changed"/>
-  <img id="spinner" class="htmx-indicator" src="/static/img/spinning-circles.svg"/>
+  <img style="height: 20px" id="spinner" class="htmx-indicator" src="/static/img/spinning-circles.svg"/>
   <input type="submit" value="Search"/>
 </form>
 
 <form>
   <table>
     <thead>
+      <tr>
       <th></th>
       <th>First</th>
       <th>Last</th>
       <th>Phone</th>
       <th>Email</th>
       <th></th>
-      <th></th>
+      </tr>
     </thead>
     <tbody>
       <%= render "src/views/partials/search.ecr" %>
@@ -37,6 +38,6 @@
 <p>
   <a href="/contacts/new">Add Contact</a>
   <span hx-get="/contacts/count" hx-trigger="revealed">
-    <img id="spinner" class="htmx-indicator" src="/static/img/spinning-circles.svg" alt="Request In Flight..."/>
+    <img id="spinner" style="height: 20px" class="htmx-indicator" src="/static/img/spinning-circles.svg"/>
   </span>
 </p>
