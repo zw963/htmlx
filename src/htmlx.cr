@@ -30,25 +30,33 @@ module RandomNumber
   end
 end
 
-class Archiver
-  # TODO: status 改为 enum
-  # 状态有三种，等待，运行中，完成
-  class_property status = "Waiting"
+module Archiver
+  enum Status
+    Waiting
+    Running
+    Complete
+  end
+
+  class_property status = Status::Waiting
+
+  # 0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0
   class_property progress = 0.0
 
-  def self.run
-    if status == "Waiting"
-      self.status = "Running"
+  extend self
+
+  def run
+    if status.waiting?
+      self.status = Status::Running
       self.progress = 0.0
       spawn run_impl
     end
   end
 
-  def self.run_impl
+  def run_impl
     10.times do |i|
       sleep rand
 
-      return if status != "Running"
+      return unless status.running?
 
       self.progress = (i + 1)/10.0
       puts "Here...#{progress}"
@@ -56,17 +64,17 @@ class Archiver
 
     sleep 1
 
-    return if status != "Running"
+    return unless status.running?
 
-    self.status = "Complete"
+    self.status = Status::Complete
   end
 
-  def self.archive_file
+  def archive_file
     "contacts.json"
   end
 
-  def self.reset
-    self.status = "Waiting"
+  def reset
+    self.status = Status::Waiting
   end
 end
 
@@ -473,8 +481,6 @@ post "/contacts/archive" do |env|
 end
 
 get "/contacts/archive" do |env|
-  puts "1"*100
-  pp! Archiver.status
   render "src/views/partials/archive_ui.ecr"
 end
 
