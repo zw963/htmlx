@@ -31,51 +31,42 @@ module RandomNumber
 end
 
 class Archiver
-  # TODO: archive_status 改为 enum
-  property archive_status = "Waiting"
-
-  property archive_progress = 0
-
+  # TODO: status 改为 enum
   # 状态有三种，等待，运行中，完成
-  def status
-    archive_status
-  end
+  class_property status = "Waiting"
+  class_property progress = 0.0
 
-  def progress
-    archive_progress
-  end
-
-  def run
-    if archive_status == "Waiting"
-      self.archive_status = "Running"
-      self.archive_progress = 0
-      # self.archive.thread = nil
+  def self.run
+    if status == "Waiting"
+      self.status = "Running"
+      self.progress = 0.0
       spawn run_impl
     end
   end
 
-  def run_impl
+  def self.run_impl
     10.times do |i|
       sleep rand
 
-      return if archive_status != "Running"
+      return if status != "Running"
 
-      self.archive_progress = (i + 1)/10.0
+      self.progress = (i + 1)/10.0
+      puts "Here...#{progress}"
     end
 
     sleep 1
 
-    return if archive_status != "Running"
+    return if status != "Running"
 
-    self.archive_status = "Complete"
+    self.status = "Complete"
   end
 
-  def archive_file
+  def self.archive_file
     "contacts.json"
   end
 
-  def reset
-    self.archive_status = "Waiting"
+  def self.reset
+    self.status = "Waiting"
   end
 end
 
@@ -364,6 +355,7 @@ end
 get "/contacts" do |env|
   query = env.params.query["q"]?
   page = (env.params.query["page"]? || 1).to_i
+  Archiver.reset
 
   if query.nil?
     contacts = Contact.all(page)
@@ -473,6 +465,17 @@ post "/contacts/new" do |env|
   else
     render "src/views/new.ecr", "src/views/layouts/layout.ecr"
   end
+end
+
+post "/contacts/archive" do |env|
+  Archiver.run
+  render "src/views/partials/archive_ui.ecr"
+end
+
+get "/contacts/archive" do |env|
+  puts "1"*100
+  pp! Archiver.status
+  render "src/views/partials/archive_ui.ecr"
 end
 
 Kemal.run

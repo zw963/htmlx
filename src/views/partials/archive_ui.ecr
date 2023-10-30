@@ -1,0 +1,17 @@
+<div id="archive-ui" hx-target="this" hx-swap="outerHTML">
+  <% if Archiver.status == "Waiting" %>
+    <button hx-post="/contacts/archive">
+      Download Contact Archive
+    </button>
+  <% elsif Archiver.status == "Running" %>
+    <div hx-get="/contacts/archive" hx-trigger="load delay:500ms">
+      Creating Archive ...
+      <div class="progress">
+        <div class="progress-bar"
+             role="progressbar"
+             style="width:<%= Archiver.progress * 100 %>%">
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
