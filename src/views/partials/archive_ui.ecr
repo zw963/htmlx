@@ -1,9 +1,9 @@
 <div id="archive-ui" hx-target="this" hx-swap="outerHTML">
-  <% if Archiver.status == "Waiting" %>
+  <% case Archiver.status when .waiting? %>
     <button hx-post="/contacts/archive">
       Download Contact Archive
     </button>
-  <% elsif Archiver.status == "Running" %>
+  <% when .running? %>
     <div hx-get="/contacts/archive" hx-trigger="load delay:500ms">
       Creating Archive ...
       <div class="progress">
