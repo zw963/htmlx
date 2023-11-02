@@ -15,7 +15,10 @@
       </div>
     </div>
   <% when .complete? %>
-    <a href="/contacts/archive/file" hx-boost="false">
+    <a href="/contacts/archive/file"
+       hx-boost="false"
+       _="on load click() me"
+    >
       Archive ready! Click here to download. &downarrow;
     </a>
     <button hx-delete="/contacts/archive">Clear Download</button>
