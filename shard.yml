@@ -14,8 +14,7 @@ dependencies:
   crinja:
     github: straight-shoota/crinja
   hashr:
-    # github: crystal-china/hashr
-    path: /home/zw963/Crystal/crystal-china/hashr
+    github: crystal-china/hashr
   json_mapping:
     github: crystal-lang/json_mapping.cr
   kemal-session:
