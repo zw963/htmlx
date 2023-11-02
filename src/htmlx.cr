@@ -3,8 +3,13 @@ require "kemal-flash"
 require "hashr"
 
 require "baked_file_system_mounter"
+
 BakedFileSystemMounter.assemble(["public"])
-BakedFileSystemStorage.mount
+
+{% if flag?(:release) %}
+  BakedFileSystemStorage.mount
+{% end %}
+
 require "./gen_rand"
 require "./archiver"
 require "./contact"
