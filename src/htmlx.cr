@@ -484,6 +484,11 @@ get "/contacts/archive" do |env|
   render "src/views/partials/archive_ui.ecr"
 end
 
+delete "/contacts/archive" do |env|
+  Archiver.reset
+  render "src/views/partials/archive_ui.ecr"
+end
+
 get "/contacts/archive/file" do |env|
   env.response.headers["Content-Disposition"] = "attachment; filename=archive.json"
   send_file env, "contacts.json"
