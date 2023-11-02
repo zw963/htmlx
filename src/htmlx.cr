@@ -1,6 +1,10 @@
 require "kemal"
 require "kemal-flash"
 require "hashr"
+
+require "baked_file_system_mounter"
+BakedFileSystemMounter.assemble(["public"])
+BakedFileSystemStorage.mount
 require "./gen_rand"
 require "./archiver"
 require "./contact"
