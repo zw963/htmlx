@@ -8,12 +8,15 @@
       Creating Archive ...
       <div class="progress">
         <div class="progress-bar"
+             id="archive-progress"
              role="progressbar"
              style="width:<%= Archiver.progress * 100 %>%">
         </div>
       </div>
     </div>
   <% when .complete? %>
-    <a href="/contacts/archive/file" hx-boost="false" >Archive ready! Click here to download. &downarrow; </a>
+    <a href="/contacts/archive/file" hx-boost="false">
+      Archive ready! Click here to download. &downarrow;
+    </a>
   <% end %>
 </div>
